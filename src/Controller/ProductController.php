@@ -12,12 +12,18 @@ final class ProductController extends AbstractController
     #[Route('/products', name: 'app_product')]
     public function index(ProductRepository $repository): Response
     {
-        $products = $repository->findAll();
-
-        dd($products);
-
         return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
+            'products' => $repository->findAll()
+        ]);
+    }
+
+    #[Route('/product/{id<\d+>}')]
+    public function show($id, ProductRepository $repository): Response
+    {
+        $product = $repository->findOneBy(['id' => $id]);
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product
         ]);
     }
 }

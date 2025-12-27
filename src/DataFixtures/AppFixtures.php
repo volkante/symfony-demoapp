@@ -11,7 +11,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $product = new Product;
-        $product->setName("Product ONe");
+        $product->setName("Product One");
         $product->setDescription("This is the best product");
         $product->setSize(100);
 
