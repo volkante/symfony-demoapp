@@ -20,7 +20,7 @@ final class ProductController extends AbstractController
     #[Route('/product/{id<\d+>}')]
     public function show($id, ProductRepository $repository): Response
     {
-        $product = $repository->findOneBy(['id' => $id]);
+        $product = $repository->find($id);
 
         return $this->render('product/show.html.twig', [
             'product' => $product
