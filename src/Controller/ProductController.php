@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\ProductRepository;
+use App\Entity\Product;
 
 final class ProductController extends AbstractController
 {
@@ -18,10 +19,11 @@ final class ProductController extends AbstractController
     }
 
     #[Route('/product/{id<\d+>}')]
-    public function show($id, ProductRepository $repository): Response
+    public function show(/* $id, ProductRepository $repository */Product $product): Response
     {
-        $product = $repository->find($id);
+        /* $product = $repository->find($id);
 
+ */
         return $this->render('product/show.html.twig', [
             'product' => $product
         ]);
